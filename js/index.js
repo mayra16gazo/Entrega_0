@@ -12,3 +12,18 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+let username = sessionStorage.getItem("username");
+if (username == null){
+    alert("Debe ingresar como usuario");
+    location.href="login.html" ;
+}; 
+
+
+
+
+
+
+
+
+
