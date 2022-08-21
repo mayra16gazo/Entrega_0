@@ -21,7 +21,7 @@ function ingreso(){
 
     if(username !== '' && password !== ''){    
         sessionStorage.setItem("username", username);  
-         location.href="index.html";
+         location.href="./index.html";
     }
     else{
         showAlertError();
