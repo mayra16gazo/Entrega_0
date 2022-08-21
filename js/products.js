@@ -1,12 +1,12 @@
 const url_prod ='https://japceibal.github.io/emercado-api/cats_products/101.json';
 
- let articulos = [];
+
 
  function verarticulos(autos){
-    let htmlContentToAppend = "";
-    for(let car of autos.products){
-        htmlContentToAppend +=`
-        <div class="list-group-item list-group-item-action"> 
+    let MostrarAutos = "";  
+    for(let car of autos.products){     
+        MostrarAutos +=` 
+         <div class="list-group-item list-group-item-action">  
              <div class="row"> 
                 <div class="col-3">
                      <img src="` + car.image + `" alt="product image"  class="img-thumbnail">
@@ -26,16 +26,18 @@ const url_prod ='https://japceibal.github.io/emercado-api/cats_products/101.json
          
          
      }
-     document.getElementById("container").innerHTML = htmlContentToAppend;
+     document.getElementById("container").innerHTML = MostrarAutos;   
 
 
     }
 
-    document.addEventListener("DOMContentLoaded", function(e){
-        getJSONData(url_prod).then(function(resultObj){
-            if(resultObj.status === "ok"){
-                articulos = resultObj.data;
-                verarticulos(articulos);
+    let articulos = [];
+
+    document.addEventListener("DOMContentLoaded", function(e){    
+        getJSONData(url_prod).then(function(resultObj){     
+            if(resultObj.status === "ok"){                  
+                articulos = resultObj.data;                
+                verarticulos(articulos);                    
             }
         })
     })

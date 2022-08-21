@@ -97,7 +97,7 @@ footer p {
 
 .alert {
   position: fixed;
-  top: 80px;
+  bottom: 80px;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -187,4 +187,12 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+
+
+.h4-productos {
+  position: relative;
+  top: 5px;
+  left: 50%;
+
 }
