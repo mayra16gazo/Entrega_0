@@ -39,3 +39,6 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+document.getElementById('nombre_usuario').innerHTML = sessionStorage.username;

@@ -40,6 +40,12 @@
         padding: 15px;  
         
       }
+      .login_google {
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        text-align: center;
+      }
     </style>
   </head>
 
@@ -64,6 +70,29 @@
             placeholder="Ingrese su contraseña"
           /><br><br>
           <button type="submit" id="button">Acceder</button>
+        </div>
+        <br />
+        <div class="login_google">
+          <script
+            src="https://accounts.google.com/gsi/client"
+            async
+            defer
+          ></script>
+          <div
+            id="g_id_onload"
+            data-client_id="YOUR_GOOGLE_CLIENT_ID"
+            data-login_uri="https://your.domain/your_login_endpoint"
+            data-auto_prompt="false"
+          ></div>
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+          ></div>
         </div>
         
       </div>
@@ -92,7 +121,7 @@
       </div>
     </footer>
     <script src="/index.html"></script>
-    <script src="/js/login.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

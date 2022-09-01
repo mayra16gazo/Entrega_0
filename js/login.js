@@ -21,13 +21,13 @@ function ingreso(){
 
     if(username !== '' && password !== ''){    
         sessionStorage.setItem("username", username);  
-        location.href="./index.html";
-    }
-    else{
-        showAlertError();
-        
-     
-    }
+         location.href="./index.html";
+     }
+     else{
+         showAlertError();
+         
+      
+     }
 }
 
     
