@@ -57,7 +57,56 @@ localStorage.getItem("catID") + ".json";
             verarticulos(articulos);
             document.getElementById('rangeFilterCostMin').value = "" ;
             document.getElementById('rangeFilterCostMax').value = "" ;
-        })
+        });
 
-    })
+        let btnAsc = document.getElementById("sortAsc");
+        let btnDesc = document.getElementById("sortDesc");
+        let btnCount = document.getElementById("sortCount");
 
+        function CostAsc(a, b){
+            if (a.cost < b.cost){
+                return -1;
+            }else if (a.cost > b.cost){
+                return 1;
+            }else{
+                return 0;
+            };
+        }
+        function CostDesc(a, b){
+            if (a.cost > b.cost){
+                return -1;
+            }else if (a.cost < b.cost){
+                return 1;
+            }else{
+                return 0;
+            };
+        }
+
+        function sortCount(a, b){
+            if (a.soldCount > b.soldCount){
+                return -1;
+            }else if (a.soldCount < b.soldCount){
+                return 1;
+            }else{
+                return 0;
+            };
+        }    
+
+
+        btnAsc.addEventListener('click', function(event){
+            articulos.sort(CostAsc);
+            verarticulos(articulos);
+        });
+
+
+        btnDesc.addEventListener('click', function(event){
+            articulos.sort(CostDesc);
+            verarticulos(articulos);
+        });
+
+
+        btnCount.addEventListener('click', function(event){
+            articulos.sort(sortCount);
+            verarticulos(articulos);
+        });
+    });
