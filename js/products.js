@@ -1,14 +1,14 @@
 const url_prod ='https://japceibal.github.io/emercado-api/cats_products/'+
-localStorage.getItem("catID") + ".json";
+localStorage.getItem("catID") + ".json";    
 
 
  function verarticulos(autos){
-    let MostrarAutos = "";  
+    let MostrarProductos = "";  
     for(let car of autos){     
-        MostrarAutos +=` 
-         <div class="list-group-item list-group-item-action">  
-             <div class="row"> 
-                <div class="col-3">
+        MostrarProductos +=` 
+         <div id="${car.id}" class="list-group-item list-group-item-action">  
+             <div class="row" > 
+                <div class="col-3" id="col-3">
                      <img src="` + car.image + `" alt="product image"  class="img-thumbnail">
                  </div>
                  <div class="col">
@@ -23,13 +23,15 @@ localStorage.getItem("catID") + ".json";
                  </div>
              </div>
          </div>`
-         
-         
-     }
-     document.getElementById("container").innerHTML = MostrarAutos;   
-
-
+        }
+        document.getElementById("container").innerHTML = MostrarProductos;
     }
+    
+    function setProdID(id) {
+        localStorage.setItem("ProductID", id);
+        window.location = "product-info.html"
+    }
+
 
     let articulos = [];
 
@@ -37,7 +39,13 @@ localStorage.getItem("catID") + ".json";
         getJSONData(url_prod).then(function(resultObj){     
             if(resultObj.status === "ok"){                  
                 articulos = resultObj.data.products;                
-                verarticulos(articulos);                    
+                verarticulos(articulos); 
+                let listaproduc = document.getElementsByClassName('list-group-item');
+                for (const item of listaproduc){
+                    item.addEventListener("click", function(){
+                        setProdID(item.id)
+                    });
+                }                   
             }
         })
         
@@ -63,13 +71,13 @@ localStorage.getItem("catID") + ".json";
         let btnDesc = document.getElementById("sortDesc");
         let btnCount = document.getElementById("sortCount");
 
-        function CostAsc(a, b){
-            if (a.cost < b.cost){
+        function CostAsc(a, b){ 
+            if (a.cost < b.cost){  
                 return -1;
-            }else if (a.cost > b.cost){
+            }else if (a.cost > b.cost){  
                 return 1;
             }else{
-                return 0;
+                return 0;  
             };
         }
         function CostDesc(a, b){
@@ -83,7 +91,7 @@ localStorage.getItem("catID") + ".json";
         }
 
         function sortCount(a, b){
-            if (a.soldCount > b.soldCount){
+            if (a.soldCount > b.soldCount){ 
                 return -1;
             }else if (a.soldCount < b.soldCount){
                 return 1;
@@ -109,4 +117,6 @@ localStorage.getItem("catID") + ".json";
             articulos.sort(sortCount);
             verarticulos(articulos);
         });
+
     });
+
