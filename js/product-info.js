@@ -20,18 +20,30 @@ fetch(URL_INFO_PRODUCT)
     <img src="${datos.images[1]}" class="img-thumbnail col-sm-3">
     <img src="${datos.images[2]}" class="img-thumbnail col-sm-3">
     <img src="${datos.images[3]}" class="img-thumbnail col-sm-3">
-    </div>
-    <h3>Productos Relacionados</h3>
-    <div id="producRelacionados">
-    <p>${datos.relatedProducts.name}</p>
-    <img id="relacionados" src="${datos.relatedProducts.image}">
+    </div>`
     
-    `
-
     CONTENEDOR.innerHTML = htmlInfoProduct;
-     
-    
+        
 });
+
+const contenedorRelacionados = document.getElementById('container_relacionados');
+
+fetch(URL_INFO_PRODUCT)
+.then(respuesta => respuesta.json())
+.then(datos=>{
+    let htmlPorducrelacionado= ''
+    htmlPorducrelacionado += `<h3>Productos Relacionados</h3>
+    <div class="row">
+    <h5>${datos.relatedProducts[0].name}</h5>
+    <img src="${datos.relatedProducts[0].image}" class="img-thumbnail col-sm-3">
+    <h5>${datos.relatedProducts[1].name}</h5>
+    <img src="${datos.relatedProducts[1].image}" class="img-thumbnail col-sm-3">
+    </div>`
+    
+    
+    contenedorRelacionados.innerHTML = htmlPorducrelacionado;
+});
+
 
 const URL_COMENTARIOS = 'https://japceibal.github.io/emercado-api/products_comments/' + articuloSeleccionado + ".json";
 
