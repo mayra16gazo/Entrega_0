@@ -2,22 +2,22 @@ const url_prod ='https://japceibal.github.io/emercado-api/cats_products/'+
 localStorage.getItem("catID") + ".json";    
 
 
- function verarticulos(autos){
+ function verarticulos(productos){
     let MostrarProductos = "";  
-    for(let car of autos){     
+    for(let producto of productos){     
         MostrarProductos +=` 
-         <div id="${car.id}" class="list-group-item list-group-item-action">  
+         <div id="${producto.id}" class="list-group-item list-group-item-action">  
              <div class="row" > 
                 <div class="col-3" id="col-3">
-                     <img src="` + car.image + `" alt="product image"  class="img-thumbnail">
+                     <img src="` + producto.image + `" alt="product image"  class="img-thumbnail">
                  </div>
                  <div class="col">
                      <div class="d-flex w-100 justify-content-between">
                          <div class="mb-1">
-                         <h4>`+ car.name + " " + "-" + " " + car.currency + " " + car.cost +`</h4>
-                         <p> `+ car.description +`</p>
+                         <h4>`+ producto.name + " " + "-" + " " + producto.currency + " " + producto.cost +`</h4>
+                         <p> `+ producto.description +`</p>
                          </div>
-                         <small class="text-muted">` + car.soldCount + " " + "Vendidos" + ` </small> 
+                         <small class="text-muted">` + producto.soldCount + " " + "Vendidos" + ` </small> 
                      </div>
 
                  </div>

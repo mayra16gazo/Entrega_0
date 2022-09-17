@@ -40,9 +40,28 @@
     </div>
   </nav>
   <main>
-    <div id="container">
+    <div id="container" class="container mt-5">
     </div>
-    <div id="containerComentarios"></div>
+    <h3>Comentarios</h3>
+    <div id="containerComentarios" class="container mt-4">
+    </div>
+    <div id="añadir_comentario" class="container mt-4">
+      <form id="form" class="col-5">
+        <label for="cuerpo">Deja aquí tu comentario:</label><br>
+        <textarea id="cuerpo" name="cuerpo" class="form-control col-5 mb-4"></textarea><br>
+        <label for="puntuacion" class="form-label">Puntuacion:</label>
+        <select  id="puntuacion" name="puntuacion">
+          <option value="0"></option>
+          <option value="1">⭐</option>
+          <option value="2">⭐⭐</option>                    
+          <option value="3">⭐⭐⭐ </option>
+          <option value="4">⭐⭐⭐⭐ </option>
+          <option value="5">⭐⭐⭐⭐⭐ </option>
+        </select><br>
+        <input id="enviar" type="submit" class="btn btn-primary" value="Enviar">
+
+      </form>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
