@@ -33,7 +33,16 @@
           <li class="nav-item">
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nombre_usuario"></a>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nombreUsuario" id="nombre_usuario"></a>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                <li><a class="dropdown-item active"href="cart.html">Mi carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -44,13 +53,16 @@
     </div>
     <div id="container_relacionados" class="container mt-5">
     </div>
-    <h3>Comentarios</h3>
+    <div id="container" class="container mt-5">
+      <h3>Comentarios</h3>
+    </div>
     <div id="containerComentarios" class="container mt-4">
     </div>
+    <div id="nuevoComentario" class="container mt-4"></div>
     <div id="añadir_comentario" class="container mt-4">
       <form id="form" class="col-5">
-        <label for="cuerpo">Deja aquí tu comentario:</label><br>
-        <textarea id="cuerpo" name="cuerpo" class="form-control col-5 mb-4"></textarea><br>
+        <label for="cuerpo" id="nuevocomentario">Deja aquí tu comentario:</label><br>
+        <textarea id="newcomentario" name="cuerpo" class="form-control col-5 mb-4"></textarea><br>
         <label for="puntuacion" class="form-label">Puntuacion:</label>
         <select  id="puntuacion" name="puntuacion">
           <option value="0"></option>
@@ -60,7 +72,7 @@
           <option value="4">⭐⭐⭐⭐ </option>
           <option value="5">⭐⭐⭐⭐⭐ </option>
         </select><br>
-        <input id="enviar" type="submit" class="btn btn-primary" value="Enviar">
+        <input id="enviarComentario" type="submit" class="btn btn-primary" value="Enviar">
 
       </form>
     </div>

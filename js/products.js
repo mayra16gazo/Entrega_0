@@ -119,4 +119,3 @@ localStorage.getItem("catID") + ".json";
         });
 
     });
-

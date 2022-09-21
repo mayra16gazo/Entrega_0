@@ -196,3 +196,12 @@ a.custom-card:hover {
   left: 50%;
 
 }
+
+.nombreUsuario{
+  color: white
+}
+
+.carousel{
+  width: 50%;
+  height: 50%;
+}
