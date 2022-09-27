@@ -1,7 +1,12 @@
 let articuloSeleccionado = localStorage.getItem('ProductID');
 const URL_INFO_PRODUCT = 'https://japceibal.github.io/emercado-api/products/'+ articuloSeleccionado + ".json";
 const CONTENEDOR = document.getElementById('container');
+const CONTRELACIONADOS = document.getElementById('container_relacionados');
 
+function setProdID(id) {
+    localStorage.setItem("ProductID", id);
+    window.location = "product-info.html"
+}
 
 fetch(URL_INFO_PRODUCT)
 .then(respuesta => respuesta.json())
@@ -38,39 +43,22 @@ fetch(URL_INFO_PRODUCT)
     <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-    <br>
-    <h3>Productos Relacionados</h3>
-    <div id="${datos.relatedProducts[0].id}" class="articulosRelacionados" >
-    <div class="row">
-    <h5>${datos.relatedProducts[0].name}</h5>
-    <img src="${datos.relatedProducts[0].image}" class="img-thumbnail col-sm-3">
-    </div>
-    </div>
-    <div id="${datos.relatedProducts[1].id}" class="articulosRelacionados">
-    <div class="row">
-    <h5>${datos.relatedProducts[1].name}</h5>
-    <img src="${datos.relatedProducts[1].image}" class="img-thumbnail col-sm-3">
-    </div>
-    </div>`
-    
-    
+    </button><br>
+    <h3>Productos Relacionados</h3>`
     CONTENEDOR.innerHTML = htmlInfoProduct;
-        
+    let MostrarRelacionados ='';
+    for(let producto of datos.relatedProducts){
+        MostrarRelacionados +=`<div onclick="setProdID(${producto.id})" class="list-group-item-action articulosRelacionados">
+    <div class="row">
+    <h5>${producto.name}</h5>
+    <img src="${producto.image}" class="img-thumbnail col-sm-3">
+    </div>
+    </div>
+    <br>`
+};
+
+CONTRELACIONADOS.innerHTML = MostrarRelacionados;
 });
-
-// function setRelacionados(id){
-//     localStorage.setItem("RelacionadosID", datos.relatedProducts[0].id);
-//     window.location = "product-info.html"
-// }
-
-// let articulosRelacionados = document.getElementsByClassName('articulosRelacionados');
-// for (const item of articulosRelacionados){
-//     item.addEventListener('click', function(){
-//         setProdID(item.id)
-//     });
-// }
 
  function puntuacion(start){
      let estrellas='';
@@ -87,7 +75,6 @@ fetch(URL_INFO_PRODUCT)
     };
 
 const URL_COMENTARIOS = 'https://japceibal.github.io/emercado-api/products_comments/' + articuloSeleccionado + ".json";
-
 
 
 fetch(URL_COMENTARIOS)
@@ -126,8 +113,3 @@ EnviarComentario.addEventListener('click', function(){
    ACAVA.innerHTML += htmlnuevoComentario;
 
 });
-
-
-    
-
-

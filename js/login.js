@@ -41,8 +41,6 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 
-client_id:"367762747849-7ndvd0kdt9dq9annpfb79ds13smu1ict.apps.googleusercontent.com"
-
 
 
 
