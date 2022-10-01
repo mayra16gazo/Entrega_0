@@ -3,6 +3,8 @@ const URL_INFO_PRODUCT = 'https://japceibal.github.io/emercado-api/products/'+ a
 const CONTENEDOR = document.getElementById('container');
 const CONTRELACIONADOS = document.getElementById('container_relacionados');
 
+// entrega 4
+
 function setProdID(id) {
     localStorage.setItem("ProductID", id);
     window.location = "product-info.html"
@@ -64,8 +66,7 @@ CONTRELACIONADOS.innerHTML = MostrarRelacionados;
      let estrellas='';
      for(let i = 1; i <= 5; i ++) {
          if (i<=start){
-            // estrellas+="*";
-           estrellas += '<i class="fas fa-star"></i>'; //icono estrella llena
+           estrellas += '<i class="fas fa-star" id="checked"></i>'; //icono estrella llena
          }else{
            estrellas+='<i class="far fa-star"></i>';
          }
@@ -96,20 +97,6 @@ fetch(URL_COMENTARIOS)
 
 });
 
-let fecha = new Date()
-let EnviarComentario = document.getElementById('enviarComentario');
-let dateTime = `${fecha.getFullYear()}-${fecha.getMonth() + 1}-${fecha.getDate()}-${fecha.toLocaleTimeString()}`;
 
-EnviarComentario.addEventListener('click', function(){
-    let Descripcion = document.getElementById('newcomentario').value; //lo que se escribe en el comentario
-    let PuntuacionEnviada = document.getElementById('puntuacion').value; //puntuacion
-    let usuario = localStorage.getItem('username');
-    let htmlnuevoComentario = '';
-    htmlnuevoComentario +=`<div class="list-group-item col-sm12">
-    <div><b>${usuario}</b> ${dateTime} ${PuntuacionEnviada}</div>
-    <p>${Descripcion}</p>
-    </div>`
-   let ACAVA = document.getElementById('nuevoComentario');
-   ACAVA.innerHTML += htmlnuevoComentario;
 
-});
+  

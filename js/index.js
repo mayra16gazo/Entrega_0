@@ -13,11 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 });
 
-let username = sessionStorage.getItem("username");
-if (username == null){
-    alert("Debe ingresar como usuario");
-    location.href="./login.html" ;
-}; 
+
 
 
 

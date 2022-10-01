@@ -205,3 +205,8 @@ a.custom-card:hover {
   width: 50%;
   height: 50%;
 }
+
+.fas {
+  color: rgb(255, 166, 0);
+
+}

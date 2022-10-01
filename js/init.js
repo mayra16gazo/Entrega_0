@@ -40,5 +40,24 @@ let getJSONData = function(url){
     });
 }
 
+//Entrega 4
 
-document.getElementById('nombre_usuario').innerHTML = sessionStorage.username;
+function cerrarSesion(){
+  localStorage.removeItem('username');
+  location.href = "login.html"
+}
+
+let btncerrar = document.getElementById('cerrarSesion');
+btncerrar.addEventListener('click', function(){
+  cerrarSesion();
+});
+
+
+let username = localStorage.getItem("username");
+if (username == null){
+    alert("Debe ingresar como usuario");
+    location.href="login.html" ;
+}else{
+  document.getElementById('nombre_usuario').innerHTML = username
+
+}; 
