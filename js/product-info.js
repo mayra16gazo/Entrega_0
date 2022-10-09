@@ -15,7 +15,8 @@ fetch(URL_INFO_PRODUCT)
 .then(datos =>{
     console.log(datos)
     let htmlInfoProduct = ''; 
-    htmlInfoProduct+= `<h1>${datos.name}</h1><hr>
+    htmlInfoProduct+= `<h1>${datos.name}</h1>
+    <hr>
     <h3>Precio</h3>
     <p>${datos.currency + " " + datos.cost}</p>
     <h3>Descripción</h3>
@@ -46,6 +47,9 @@ fetch(URL_INFO_PRODUCT)
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
     </button><br>
+    <button type="button" id="addcart" class="btn btn-primary pull-right">Añadir al carrito</button
+    <br>
+    <hr>
     <h3>Productos Relacionados</h3>`
     CONTENEDOR.innerHTML = htmlInfoProduct;
     let MostrarRelacionados ='';
@@ -66,7 +70,7 @@ CONTRELACIONADOS.innerHTML = MostrarRelacionados;
      let estrellas='';
      for(let i = 1; i <= 5; i ++) {
          if (i<=start){
-           estrellas += '<i class="fas fa-star" id="checked"></i>'; //icono estrella llena
+           estrellas += '<i class="fas fa-star"></i>'; //icono estrella llena
          }else{
            estrellas+='<i class="far fa-star"></i>';
          }
@@ -97,6 +101,15 @@ fetch(URL_COMENTARIOS)
 
 });
 
+
+//AÑADIR AL CARRITO
+
+const ADDCART = document.getElementById('addcart');
+ADDCART.addEventListener('click', addcartclick);
+
+function addcartclick(){
+    
+}
 
 
   
