@@ -47,7 +47,7 @@ fetch(URL_INFO_PRODUCT)
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
     </button><br>
-    <button type="button" id="addcart" class="btn btn-primary pull-right">Añadir al carrito</button
+    <button type="button" id="agregar${datos.id}" class="btn btn-primary pull-right">Añadir al carrito</button
     <br>
     <hr>
     <h3>Productos Relacionados</h3>`
@@ -91,7 +91,8 @@ fetch(URL_COMENTARIOS)
     htmlcomentarios += `<div class="list-group-item col-sm12">
     <div><b>${datos[i].user}</b> ${datos[i].dateTime} ${puntuacion(datos[i].score)}</div>
     <p>${datos[i].description}</p>
-    </div>`   
+    </div>
+    `   
     }
 
     let COMENTARIOS = document.getElementById('containerComentarios')
@@ -100,6 +101,9 @@ fetch(URL_COMENTARIOS)
 
 
 });
+
+
+
 
 
 //AÑADIR AL CARRITO
