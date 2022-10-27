@@ -63,18 +63,31 @@
                     <div class="col-lg-10 col-xl-8">
                       <div class="cart-container border-2">
                         <div class="cart-head">
-                          <div class="table-responsive" id="table"></div>
+                          <div class="table-responsive">
+                            <table class="table">
+                              <tr>
+                                  <th></th>
+                                  <th>Nombre</th>
+                                  <th>Costo</th>
+                                  <th>Cantidad</label>
+                                  <th>Sub.total</th>
+                              </tr>
+                              <tbody id="tabla-body">
+
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <div class="row">
                           <div class="col-md-12 col-12 d-flex flex-column">
                             <h3 class="text-center fw-bold text-start text-sm-start">Tipo de envio:
                             </h3>
                             <form id="tipodeEnvio">
-                              <input type="radio" name="tipodeEnvio" id="p" value="p">
+                              <input type="radio" name="tipodeEnvio" id="Enviopremium" value="p">
                               <label for="tde">Premium 2 a 5 días (15%)</label><br>
-                              <input type="radio" name="tipodeEnvio" id="e" value="e">
+                              <input type="radio" name="tipodeEnvio" id="Envioexpress" value="e">
                               <label for="tde">Express 5 a 8 días (7%)</label><br>
-                              <input type="radio" name="tipodeEnvio" id="s" value="s">
+                              <input type="radio" name="tipodeEnvio" id="Enviostandar" value="s">
                               <label for="tde">Standar 12 a 15 días (5%)</label><br>
                             </form>
                             <br>
@@ -99,6 +112,47 @@
                             </div>
                           </div>
                       </div>
+                      <br>
+                      <hr>
+                      <div class="CostosEnvio">
+                        <h5>Costos</h5>
+                        <div class="container list-group-item">
+                          <div class="row justify-content-between">
+                            <div class="col-6">
+                              Subtotal
+                            </div>
+                            <div class="col-6 text-end" id="subtotalCart">
+                              aca va el subtotal
+                            </div>
+                            <div class="col-12">
+                              Costo unitario del producto por cantidad
+                            </div>
+                          </div>
+                        </div>
+                        <div class="container list-group-item">
+                          <div class="row justify-content-between">
+                            <div class="col-6">
+                              Costo de envio
+                            </div>
+                            <div class="col-6 text-end" id="shipping">
+                              aca va el costo de envio
+                            </div>
+                            <div class="col-12">
+                              Segun el tipo de envio
+                            </div>
+                          </div>
+                        </div>
+                        <div class="container list-group-item">
+                          <div class="row justify-content-between">
+                            <div class="col-6" id="total">
+                              Total USD
+                            </div>
+                            <div class="col-6 text-end" id="totalCart">
+                              aca va el total
+                            </div>
+                          </div>
+                        </div>
+
                     </div>
                   </div>
                 </div>
