@@ -1,7 +1,5 @@
 const URL_PRODUCTO = 'https://japceibal.github.io/emercado-api/user_cart/25801.json';
-
 const TABLECART = document.getElementById('tabla-body');
-
 let carrito = [];
 
 
@@ -15,6 +13,7 @@ function vercarrito(articles){
                 <td id="costoProducto">${producto.currency + " " + producto.unitCost}</th>
                 <td><input id="input" style="width:50px" value ="${producto.count}" min="1" type = "number" onclick ="calcular(this.value)"></th>
                 <td id=subtotaal><strong><p id="subtotal">USD ${producto.unitCost}</p></strong></td>
+                <td><button type="button" class="btn btn-danger" id="eliminar">Eliminar</button></td>
                          
             </tr>`
                 
@@ -37,6 +36,17 @@ function calcular(unidades){
 }
 
 
+
+// ENTREGA 6
+
+
+function eliminar(){
+    let btneliminar = document.getElementById('eliminar');
+    btneliminar.addEventListener('click', function(){
+        console.log(carrito);
+    })
+
+}
 
 
 function costosfinales(){
@@ -79,15 +89,64 @@ document.getElementById('Enviostandar').addEventListener("change", function(){
 
 
 
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+  
+  
+
+  function metodopago(tarjeta, banco, text){
+    document.getElementById('Numerotarjeta').disabled = tarjeta;
+    document.getElementById('codseg').disabled = tarjeta;
+    document.getElementById('vto').disabled = tarjeta;
+    document.getElementById('Numerocuenta').disabled = banco;
+    document.getElementById('Noselecciono').innerHTML = text;
+    checked = true;
+    
+  }
+
+  document.getElementById('tarjeta').addEventListener('change', function(){
+    metodopago(false, true, 'Tarjeta de cédito');
+    checked = true;
+  })
+
+  document.getElementById('tranf').addEventListener('change', function(){
+    metodopago(true, false, 'Transferencia bancaria');
+    checked = true;
+  })
+
+
+function validarpago(){
+    let check1 = document.getElementById('tarjeta');
+    let check2 = document.getElementById('tranf');
+    let feedback = document.getElementById('Noselecciono')
+    let btnpago = document.getElementById('boton-pago');
+    if(!check1.checked && !check2.checked){
+
+        btnpago.classList.add('text-danger');
+        feedback.classList.remove('d-none');
+        feedback.classList.add('d-inline');
+   
+}}
 
 
 
-
-
-
-
-
-
-
-
-
+//Falta que este seleccionado uno de los radios de los envios.
+// Falta que diga que no se a seleccionado un metodo de pago
