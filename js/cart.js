@@ -112,23 +112,23 @@ document.getElementById('Enviostandar').addEventListener("change", function(){
   
   
 
-  function metodopago(tarjeta, banco, text){
+  function metodopago(tarjeta, banco){
     document.getElementById('Numerotarjeta').disabled = tarjeta;
     document.getElementById('codseg').disabled = tarjeta;
     document.getElementById('vto').disabled = tarjeta;
     document.getElementById('Numerocuenta').disabled = banco;
-    document.getElementById('Noselecciono').innerHTML = text;
+    
     checked = true;
     
   }
 
   document.getElementById('tarjeta').addEventListener('change', function(){
-    metodopago(false, true, 'Tarjeta de cédito');
+    metodopago(false, true);
     checked = true;
   })
 
   document.getElementById('tranf').addEventListener('change', function(){
-    metodopago(true, false, 'Transferencia bancaria');
+    metodopago(true, false);
     checked = true;
   })
 
@@ -143,10 +143,12 @@ function validarpago(){
         btnpago.classList.add('text-danger');
         feedback.classList.remove('d-none');
         feedback.classList.add('d-inline');
-   
-}}
+    }
+    
+}
 
 
 
 //Falta que este seleccionado uno de los radios de los envios.
 // Falta que diga que no se a seleccionado un metodo de pago
+//Cartel de compra con exito!
