@@ -47,10 +47,7 @@ function cerrarSesion(){
   location.href = "login.html"
 }
 
-let btncerrar = document.getElementById('cerrarSesion');
-btncerrar.addEventListener('click', function(){
-  cerrarSesion();
-});
+
 
 
 let username = localStorage.getItem("username");
@@ -61,3 +58,8 @@ if (username == null){
   document.getElementById('nombre_usuario').innerHTML = username
 
 }; 
+
+let btncerrar = document.getElementById('cerrarSesion');
+btncerrar.addEventListener('click', function(){
+  cerrarSesion();
+});

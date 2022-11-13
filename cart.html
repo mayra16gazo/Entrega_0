@@ -30,8 +30,6 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-          </li>
-          <li class="nav-item">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <a class="nombreUsuario" id="nombre_usuario"></a>
@@ -79,105 +77,99 @@
                             </table>
                           </div>
                         </div>
+                      </div>  
                         <div class="row">
-                          <div class="col-md-12 col-12 d-flex flex-column">
-                            
-                            <h3 class="text-center fw-bold text-start text-sm-start">Tipo de envio:
-                            </h3>
-                            <form id="tipodeEnvio" novalidate>
-                              <input type="radio" name="tipodeEnvio" id="Enviopremium" value="p">
+                          <form class="needs-validation" id="formprincipal" novalidate>
+                            <div class="form-check">
+                              <h3 class="text-center fw-bold text-start text-sm-start">Tipo de envio:
+                              </h3>
+                              <input type="radio" class="form-check-input" name="tipodeEnvio" id="Enviopremium" value="p" required>
                               <label for="tde" class="form-check-label">Premium 2 a 5 días (15%)</label><br>
-                              <input type="radio" name="tipodeEnvio" id="Envioexpress" value="e">
+                              <input type="radio" class="form-check-input" name="tipodeEnvio" id="Envioexpress" value="e" required>
                               <label for="tde" class="form-check-label">Express 5 a 8 días (7%)</label><br>
-                              <input type="radio" name="tipodeEnvio" id="Enviostandar" value="s">
+                              <input type="radio" class="form-check-input" name="tipodeEnvio" id="Enviostandar" value="s" required>
                               <label for="tde" class="form-check-label">Standar 12 a 15 días (5%)</label><br>
-                              <div class="invalid-feedback">Seleccione el tipo de envio.</div>
-                            </form>
-                            <br>
+                              <div class="invalid-feedback" id="seleccionarenvio">Seleccione el tipo de envio.</div><br>
 
-                          </div>
-                        </div>
-                          <div class="row">
-                            <form action="#" method="get" class="row mt-4 needs-validation" id="datosenvio" novalidate>
-                              <div class="col-md-12 col-12 d-flex flex-column">
+                            </div>
+                            <div class="col-md-12 col-12 d-flex flex-column">
                                 <h3 class="text-center fw-bold text-start text-sm-start">Direccion de Envio:
                                 </h3>
                                 <label for="inp1" class="form-check-label mb-2 mt-3 fs-5"> Calle
-                                  <input type="text" id="inp1" class="form-control mt-1 xxd" placeholder="Calle..." required>
+                                  <input type="text" id="calle" class="form-control mt-1 xxd" placeholder="Calle..." required>
                                   <div class="invalid-feedback">Ingresa una calle</div>
                                 </label>
                                 <label for="inp1" class="form-check-label mb-2 mt-3 fs-5"> Esquina
-                                  <input type="text" id="inp1" class="form-control mt-1 xxd" placeholder="Equina..." required>
+                                  <input type="text" id="esquina" class="form-control mt-1 xxd" placeholder="Equina..." required>
                                   <div class="invalid-feedback">Ingresa una esquina</div>
                                 </label>
                                 <label for="inp2" class="form-check-label mb-2 fs-5"> Numero de puerta
-                                  <input id="inp2" class="form-control mt-1 xxd" type="number" placeholder="Numero de puerta..." required>
+                                  <input id="puerta" class="form-control mt-1 xxd" type="number" placeholder="Numero de puerta..." required>
                                   <div class="invalid-feedback">Ingresa un numero de puerta</div>
                                 </label>
                                 <div id="formcont"></div>
                               </div>
-                            
-                            
-                          </div>
-                      </div>
-                      <br>
-                      <hr>
-                      <div class="CostosEnvio">
-                        <h5>Costos</h5>
-                        <div class="container list-group-item">
-                          <div class="row justify-content-between">
-                            <div class="col-6">
-                              Subtotal
+                              <br>
+                              <hr>
+                            <div class="CostosEnvio">
+                            <h5>Costos</h5>
+                            <div class="container list-group-item">
+                              <div class="row justify-content-between">
+                                <div class="col-6">
+                                Subtotal
+                                </div>
+                                <div class="col-6 text-end" id="subtotalCart">
+
+                                </div>
+                                <div class="col-12">
+                                Costo unitario del producto por cantidad
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-6 text-end" id="subtotalCart">
+                            <div class="container list-group-item">
+                              <div class="row justify-content-between">
+                                <div class="col-6">
+                                  Costo de envio
+                                </div>
+                                <div class="col-6 text-end" id="costoenvio">
                               
+                                </div>
+                                <div class="col-12">
+                                  Segun el tipo de envio
+                                </div>
+                              </div>
                             </div>
-                            <div class="col-12">
-                              Costo unitario del producto por cantidad
+                              <div class="container list-group-item">
+                                <div class="row justify-content-between">
+                                 <div class="col-6" id="total">
+                                    Total
+                                  </div>
+                                  <div class="col-6 text-end" id="totalCart">
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                              <hr>
+                            <div class="formadepago">
+                              <h5>Forma de pago</h5>
+                              <div class="col-sm-12"> 
+                                <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+                                data-bs-target="#modalPago" id="boton-pago">Seleccionar</button>
+                                <div class="invalid-feedback" id="noseleccionopago">No ha seleccionado metodo de pago.</div> 
+                               
+                              </div>
+
                             </div>
-                          </div>
-                        </div>
-                        <div class="container list-group-item">
-                          <div class="row justify-content-between">
-                            <div class="col-6">
-                              Costo de envio
-                            </div>
-                            <div class="col-6 text-end" id="costoenvio">
+
+                            <button class="btn btn-primary" id="btnfinalizar" type="submit">Finalizar compra</button> 
+                            
+                            <a href="categories.html" type="button" class="btn btn-success"> Seguir comprando <i
+                            class="fas fa-shopping-basket"></i></a> 
+
+                          </form>
                               
-                            </div>
-                            <div class="col-12">
-                              Segun el tipo de envio
-                            </div>
-                          </div>
+                      
                         </div>
-                        <div class="container list-group-item">
-                          <div class="row justify-content-between">
-                            <div class="col-6" id="total">
-                              Total
-                            </div>
-                            <div class="col-6 text-end" id="totalCart">
-                            </div>
-                          </div>
-                        </div>
-                        <br>
-                        <hr>
-                      <div class="formadepago">
-                        <h5>Forma de pago</h5>
-                        <div class="col-sm-12">
-                          <p class="list-inline-item">Transferencia bancaria</p> 
-                          <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
-                            data-bs-target="#modalPago" id="boton-pago">Seleccionar</button> 
-                            <p class="text-danger d-none" id="Noselecciono">No ha seleccionado</p>
-                        </div>
-
-                      </div>
-
-                      <button class="btn btn-primary" type="submit">Finalizar compra</button> 
-                      <a href="categories.html" type="button" class="btn btn-success"> Seguir comprando <i
-                        class="fas fa-shopping-basket"></i></a>
-                      </form>
-
-
                       <div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -185,50 +177,41 @@
                               <h1 class="modal-title fs-5">Forma de pago</h1>
                               <br><hr>
                             </div>
-                            <form>
+                            <form class="needs-validation" id="formpago" novalidate>
                               <div class="modal-body">
-                                <input type="radio" name="mododepago" id="tarjeta" value="t">
+                                <input type="radio" name="mododepago" id="tarjeta" value="t" >
                                 <label for="tde">Tarjeta de crédito.</label><br><hr>
                                 
                                   <label class="form-check-label">Número de tarjeta:</label>
-                                  <input type="text" name="" id="Numerotarjeta" class="form-control w-50" placeholder="XXXX-XXXX-XXXX-XXXX">
+                                  <input type="text" name="" id="Numerotarjeta" class="form-control w-50" required placeholder="XXXX-XXXX-XXXX-XXXX">
                                   <br>
                             
                                
                                   <label class="form-check-label">Código de seg.</label>
-                                  <input type="number" name="" id ="codseg" class="form-control w-50" placeholder="CCV" maxlength="3" min="001" max="999">
+                                  <input type="number" name="" id ="codseg" class="form-control w-50" required placeholder="CCV" maxlength="3" min="001" max="999">
                                   <br>
                                   
   
                                 <label class="form-check-label">Vencimiento (MM/AA):</label>
-                                <input type="month" name="" id="vto" class="form-control w-50" placeholder="MM/AA">
+                                <input type="month" name="" id="vto" class="form-control w-50" required placeholder="MM/AA">
                                 <br>
   
-                                <input type="radio" name="mododepago" id="tranf" value="t">
+                                <input type="radio" name="mododepago" id="transferencia" value="t" >
                                 <label for="tde">Transferencia bancaria.</label><br><hr>
                                 <label class="form-check-label">Número de cuenta:</label>
-                                <input type="text" name="" id="Numerocuenta" class="form-control w-100">
+                                <input type="text" name="" id="Numerocuenta" class="form-control w-100" required>
                               </div>
                             </form>
                             
                             <div class="modal-footer">
                               <div class="form-check">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                <button type="button" id="cerrarmodal" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-
-                      
-                  
-
-
-
-                      
-            
-
-                    </div>
+                      </div>
                   </div>
                 </div>
             </div>

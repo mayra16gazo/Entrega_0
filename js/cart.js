@@ -24,6 +24,8 @@ function vercarrito(articles){
 
 }
 
+let variante = [];
+
 function calcular(unidades){
     for(let producto of carrito){
     currency = producto.currency;
@@ -35,19 +37,7 @@ function calcular(unidades){
     
 }
 
-
-
 // ENTREGA 6
-
-
-function eliminar(){
-    let btneliminar = document.getElementById('eliminar');
-    btneliminar.addEventListener('click', function(){
-        console.log(carrito);
-    })
-
-}
-
 
 function costosfinales(){
     let valordeEnvio = variante * p
@@ -58,18 +48,19 @@ function costosfinales(){
 }
 
 
-
-
-
 document.addEventListener("DOMContentLoaded", function(){
     getJSONData(URL_PRODUCTO).then(function(resultObj){
         if(resultObj.status === "ok"){
             carrito = resultObj.data.articles;
             vercarrito(carrito);
             costosfinales();
+            metodoenvio();
+            
+            
         }
     })
 });
+
 
 
 document.getElementById('Enviopremium').addEventListener("change", function(){
@@ -89,66 +80,98 @@ document.getElementById('Enviostandar').addEventListener("change", function(){
 
 
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
-  
-  
 
-  function metodopago(tarjeta, banco){
-    document.getElementById('Numerotarjeta').disabled = tarjeta;
-    document.getElementById('codseg').disabled = tarjeta;
-    document.getElementById('vto').disabled = tarjeta;
-    document.getElementById('Numerocuenta').disabled = banco;
+  
+  let formuario1 = document.getElementById('formprincipal');
+  let envioP = document.getElementById('Enviopremium');
+  let envioE = document.getElementById('Envioexpress');
+  let envioS = document.getElementById('Enviostandar');
+  let btnfinalizar = document.getElementById('btnfinalizar');
+  let inputcalle = document.getElementById('calle');
+  let inputesquina = document.getElementById('esquina');
+  let inputpuerta = document.getElementById('puerta');
+
+  function validarformuario1(){
+    btnfinalizar.addEventListener('click', function(e){
+        seleccionarpago();
+        if (!formuario1.checkValidity() || !formmodal()){
+            e.preventDefault();
+            
+        } else{
+            alert('Compra exitosa!')
+        }
+        formuario1.classList.add('was-validated');
+        e.preventDefault();
+    })
     
-    checked = true;
-    
+ 
   }
 
-  document.getElementById('tarjeta').addEventListener('change', function(){
-    metodopago(false, true);
-    checked = true;
-  })
-
-  document.getElementById('tranf').addEventListener('change', function(){
-    metodopago(true, false);
-    checked = true;
-  })
 
 
-function validarpago(){
-    let check1 = document.getElementById('tarjeta');
-    let check2 = document.getElementById('tranf');
-    let feedback = document.getElementById('Noselecciono')
+
+let modal = document.getElementById('formpago');
+let tarjeta = document.getElementById('tarjeta');
+let numtarjeta = document.getElementById('Numerotarjeta');
+let codseg = document.getElementById('codseg');
+let vto = document.getElementById('vto');
+let transferencia = document.getElementById('transferencia');
+let numerocuenta = document.getElementById('Numerocuenta');
+
+
+  function habilitarpago(){
+
+    tarjeta.addEventListener('click', function(){
+        numerocuenta.disabled = true;
+        numtarjeta.disabled = false;
+        codseg.disabled = false;
+        vto.disabled = false;
+    });
+
+    transferencia.addEventListener('click', function(){
+        numerocuenta.disabled = false;
+        numtarjeta.disabled = true;
+        codseg.disabled = true;
+        vto.disabled = true;
+    })
+
+
+  }
+
+
+
+  function seleccionarpago(){
+    let feedback = document.getElementById('noseleccionopago')
     let btnpago = document.getElementById('boton-pago');
-    if(!check1.checked && !check2.checked){
+    if(!tarjeta.checked && !transferencia.checked){
 
         btnpago.classList.add('text-danger');
         feedback.classList.remove('d-none');
         feedback.classList.add('d-inline');
+    } else {
+        habilitarpago();
+        
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+    validarformuario1();
+    habilitarpago();
+    
+
+ })
+
+
+
+function formmodal(){
+    if(!modal.checkValidity()){
+        return false;
+
+    }else{
+        modal.classList.add('was-validated');
+        return true;
     }
     
 }
 
 
-
-//Falta que este seleccionado uno de los radios de los envios.
-// Falta que diga que no se a seleccionado un metodo de pago
-//Cartel de compra con exito!

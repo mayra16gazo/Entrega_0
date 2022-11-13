@@ -52,7 +52,7 @@ localStorage.getItem("catID") + ".json";
         function filter(precio){
         let costMin = document.getElementById('rangeFilterCostMin').value;
         let costMax = document.getElementById('rangeFilterCostMax').value;
-        let filterDet = precio.filter(car => car.cost >= costMin && car.cost <= costMax);
+        let filterDet = precio.filter(car => car.cost >= costMin || car.cost <= costMax);
         verarticulos(filterDet);
         
         }
