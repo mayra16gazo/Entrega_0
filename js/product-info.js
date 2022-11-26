@@ -112,6 +112,8 @@ const ADDCART = document.getElementById('addcart');
 ADDCART.addEventListener('click', addcartclick);
 
 function addcartclick(){
+
+    
     
 }
 

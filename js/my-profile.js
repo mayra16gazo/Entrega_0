@@ -1,4 +1,6 @@
+
 document.getElementById('user_email').value = localStorage.getItem('username');
+
 let primernombre = [];
 let segundonombre = [];
 let primerapellido = [];
@@ -12,13 +14,15 @@ function guardarinfo(){
   primerapellido = document.getElementById('primer_apellido').value;
   segundoapellido = document.getElementById('segundo_apellido').value;
   telefono = document.getElementById('user_phone').value;
+  fotoperfil = document.getElementById('foto_perfil').value;
   
 
   localStorage.setItem('Primer-Nombre', primernombre);
   localStorage.setItem('Segundo-Nombre', segundonombre);
   localStorage.setItem('Primer-Apellido', primerapellido);
   localStorage.setItem('Segundo-Apellido', segundoapellido);
-  localStorage.setItem('Telefono', telefono); 
+  localStorage.setItem('Telefono', telefono);
+  localStorage.setItem('Foto-perfil', fotoperfil); 
 
 }
 
@@ -39,6 +43,7 @@ let perfilform = document.getElementById('perfil_form');
     perfilform.classList.add('was-validated')
   })
 
+
 let bntcambios = document.getElementById('btn_cambios');
 bntcambios.addEventListener('click', function(){
 guardarinfo();
@@ -54,11 +59,11 @@ function mostrarinfo(){
   document.getElementById('primer_apellido').value = localStorage.getItem('Primer-Apellido');
   document.getElementById('segundo_apellido').value = localStorage.getItem('Segundo-Apellido'); 
   document.getElementById('user_phone').value = localStorage.getItem('Telefono');
+  document.getElementById('foto_perfil').value = localStorage.getItem('Foto-perfil');
 
 }
 
 document.addEventListener("DOMContentLoaded", function(){
   mostrarinfo();
 });
-
 
